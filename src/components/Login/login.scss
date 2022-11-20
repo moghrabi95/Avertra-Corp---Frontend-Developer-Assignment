@@ -1,0 +1,15 @@
+.login {
+  &__btn {
+    color: $nav-link-color;
+    text-decoration: none;
+    font-size: 16px;
+
+    padding-right: 40px;
+  }
+  a {
+    font-weight: $nav-link-font-weight;
+    &:last-child {
+      color: $btn-color;
+    }
+  }
+}

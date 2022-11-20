@@ -1,0 +1,40 @@
+.shortening {
+  &__form {
+    background-color: $primary-dark;
+    background-size: cover;
+    min-height: 168px;
+    input[type="text"] {
+      height: 55px;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    .btn {
+      --bs-btn-padding-x: 1.9rem;
+      --bs-btn-padding-y: 0.7rem;
+      --bs-btn-font-size: 1.3rem;
+      @media screen and (max-width: $mobile) {
+        border-radius: 7;
+      }
+    }
+    @media screen and (max-width: $mobile) {
+      border-radius: 7;
+    }
+  }
+  .btn {
+    color: $white;
+    font-weight: 500;
+    --bs-btn-border-radius: 10px;
+  }
+  &__links {
+    background-color: $white;
+    padding: 8px;
+    &--link {
+      color: $primary;
+    }
+  }
+  .invalid-tooltip {
+    background-color: unset;
+    color: red;
+  }
+}
