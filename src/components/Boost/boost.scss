@@ -1,0 +1,13 @@
+.boost {
+  background-image: url(./assets/images/bg-boost-desktop.svg);
+  background-color: $boost-bg-color;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @media screen and (max-width: $mobile) {
+    background-image: url(./assets/images/bg-boost-mobile.svg);
+  }
+  .btn {
+    color: $white;
+    border-radius: $btn-border-radius;
+  }
+}

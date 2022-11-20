@@ -1,10 +1,19 @@
 .shortening {
+  position: relative;
+  top: $shortening-top;
   &__form {
+    background-image: url(./assets/images/bg-shorten-desktop.svg);
+    background-repeat: no-repeat;
     background-color: $primary-dark;
     background-size: cover;
-    min-height: 168px;
+    min-height: $shortening-form-min-height;
+    border-radius: $shortening-form-border-radius;
+    @media screen and (max-width: $mobile) {
+      background-image: url(./assets/images/bg-shorten-mobile.svg);
+      padding: $shortening-form-padding-mobile;
+    }
     input[type="text"] {
-      height: 55px;
+      height: $shortening-form-input-height;
       &:focus {
         box-shadow: none;
       }
@@ -13,28 +22,63 @@
       --bs-btn-padding-x: 1.9rem;
       --bs-btn-padding-y: 0.7rem;
       --bs-btn-font-size: 1.3rem;
-      @media screen and (max-width: $mobile) {
-        border-radius: 7;
+      &:hover {
+        filter: blur(1px);
       }
-    }
-    @media screen and (max-width: $mobile) {
-      border-radius: 7;
+      @media screen and (max-width: $mobile) {
+        border-radius: $shortening-form-border-radius;
+        width: $shortening-form-btn-width-mobile;
+      }
     }
   }
   .btn {
     color: $white;
-    font-weight: 500;
-    --bs-btn-border-radius: 10px;
+    font-weight: $font-weight-500;
+    border-radius: $shortening-form-btn-border-radius;
   }
   &__links {
+    border-radius: $shortening-form-border-radius;
     background-color: $white;
-    padding: 8px;
+    padding: $shortening-links-padding;
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      @media screen and (max-width: $mobile) {
+        text-align: center;
+      }
+    }
+    &--original {
+      @media screen and (max-width: $mobile) {
+        width: $shortening-links-original-width-mobile;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-bottom: $shortening-links-original-border-bottom-mobile;
+      }
+      a {
+        color: $black;
+      }
+    }
     &--link {
       color: $primary;
     }
+    .btn-container {
+      .btn.active {
+        background-color: $very-dark-violet;
+        border-color: $very-dark-violet;
+      }
+    }
+    .btn-container,
+    .btn {
+      @media screen and (max-width: $mobile) {
+        width: $shortening-btn-width-mobile;
+      }
+    }
   }
   .invalid-tooltip {
-    background-color: unset;
-    color: red;
+    background-color: $shortening-links-invalid-tooltip-bg;
+    color: $invalid-tooltip-color;
   }
 }

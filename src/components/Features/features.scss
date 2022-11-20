@@ -1,37 +1,52 @@
 .features {
   .blockquote-custom {
     position: relative;
-    font-size: 1.1rem;
+    font-size: $features-blockquote-custom;
     &-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+      width: $features-blockquote-custom-icon-width;
+      height: $features-blockquote-custom-icon-height;
+      border-radius: $features-blockquote-custom-icon-border-radius;
       display: flex;
       align-items: center;
       justify-content: center;
       position: absolute;
-      top: -25px;
-      left: 50px;
+      top: $features-blockquote-custom-icon-top;
+      left: $features-blockquote-custom-icon-left;
+      @media screen and (max-width: $mobile) {
+        width: $features-blockquote-custom-icon-width-mobile;
+        height: $features-blockquote-custom-icon-height-mobile;
+        top: $features-blockquote-custom-icon-top-mobile;
+        left: $features-blockquote-custom-icon-left-mobile;
+        right: $features-blockquote-custom-icon-right-mobile;
+        margin: $margin-center;
+      }
     }
   }
   .bg-info {
-    --bs-info-rgb: #3b3054;
-    background-color: var(--bs-info-rgb) !important;
+    background-color: $info-rgb !important; //ovride bootstrap important style
   }
   .row {
     position: relative;
-    z-index: 1;
+    z-index: $z-index-1;
     &::before {
-      border-top: 9px solid $primary;
+      border-top: $features-border-top;
       content: "";
-      margin: 0 auto;
+      margin: $margin-center;
       position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 95%;
-      z-index: -1;
+      top: $features-row-before-top;
+      left: $features-row-before-left;
+      right: $features-row-before-left;
+      bottom: $features-row-before-bottom;
+      width: $features-row-before-width;
+      z-index: $features-row-beforez-index;
+      @media screen and (max-width: $mobile) {
+        border-top: $features-border-top-mobile;
+        border-left: $features-row-border-left;
+        top: $features-row-before-top-mobile;
+        left: $features-row-before-left-mobile;
+        height: $features-row-before-height-mobile;
+        width: $features-row-before-width-mobile;
+      }
     }
   }
 }

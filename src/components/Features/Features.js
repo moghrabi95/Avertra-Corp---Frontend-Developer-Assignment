@@ -19,7 +19,7 @@ const Features = () => {
           </blockquote>
         </div>
         <div
-          className="col-lg-4 mx-auto"
+          className="col-lg-4 mx-auto mt-5"
           style={{ transform: "translateY(30px)" }}
         >
           <blockquote className="blockquote blockquote-custom bg-white p-5 shadow rounded">
@@ -35,7 +35,7 @@ const Features = () => {
           </blockquote>
         </div>
         <div
-          className="col-lg-4 mx-auto"
+          className="col-lg-4 mx-auto  mt-5"
           style={{ transform: "translateY(60px)" }}
         >
           <blockquote className="blockquote blockquote-custom bg-white p-5 shadow rounded">

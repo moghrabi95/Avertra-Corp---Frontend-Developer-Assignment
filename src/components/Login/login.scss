@@ -2,9 +2,8 @@
   &__btn {
     color: $nav-link-color;
     text-decoration: none;
-    font-size: 16px;
-
-    padding-right: 40px;
+    font-size: $login-btn-font-size;
+    padding-right: $login-btnpadding-right;
   }
   a {
     font-weight: $nav-link-font-weight;

@@ -1,5 +1,9 @@
 .section-title {
+  margin-bottom: $section-title-margin-bottom;
+  @media screen and (max-width: $mobile) {
+    text-align: center;
+  }
   h1 {
-    font-weight: 700;
+    font-weight: $font-weight-700;
   }
 }

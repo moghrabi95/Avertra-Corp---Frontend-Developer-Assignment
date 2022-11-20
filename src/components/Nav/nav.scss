@@ -1,5 +1,10 @@
-.navlist {
-  li {
-    list-style: none;
+.navbar {
+  --bs-navbar-toggler-border-color: $white;
+  --bs-navbar-color: $custom-gray;
+  .nav-link {
+    color: $custom-gray;
+    &:hover {
+      color: $black;
+    }
   }
 }

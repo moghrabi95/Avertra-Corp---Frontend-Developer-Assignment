@@ -1,0 +1,8 @@
+.social-media {
+  svg path:hover {
+    fill: $primary;
+  }
+  @media screen and (max-width: $mobile) {
+    justify-content: center !important; //to ovrride important style from boostrap
+  }
+}

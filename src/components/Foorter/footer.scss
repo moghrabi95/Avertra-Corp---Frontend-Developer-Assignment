@@ -1,0 +1,12 @@
+.footer {
+  background-color: $very-dark-violet;
+  color: $white;
+  @media screen and (max-width: $mobile) {
+    text-align: center;
+  }
+  .logo {
+    @media screen and (max-width: $mobile) {
+      justify-content: center;
+    }
+  }
+}

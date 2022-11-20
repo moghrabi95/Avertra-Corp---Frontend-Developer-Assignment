@@ -21,14 +21,9 @@ const HeroSlide = () => {
             Build your brand's recognition and get detailed insights on how your
             links are preforming
           </p>
-          <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-            <button
-              type="button"
-              className="btn btn-primary btn-lg px-4 me-md-2"
-            >
-              Get Started
-            </button>
-          </div>
+          <button type="button" className="btn btn-primary btn-lg px-4 me-md-2">
+            Get Started
+          </button>
         </div>
       </div>
     </div>

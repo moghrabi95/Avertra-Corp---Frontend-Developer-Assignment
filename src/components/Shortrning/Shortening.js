@@ -1,12 +1,17 @@
-import { useState, useEffect, useRef } from "react";
-import ShortenedLink from "../ShortenedLink/ShortenedLink";
-import image from "../../assets/images/bg-shorten-desktop.svg";
+import { useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import changeUserInput from "../../actionCreators/changeUserInput";
+import ChangeShortenedlink from "../../actionCreators/ChangeShortenedlink";
+import changeOriginaLlink from "../../actionCreators/changeOriginaLlink";
+import changeIsErorr from "../../actionCreators/changeIsErorr";
+import ShortenedLinkCard from "../ShortenedLinkCard/ShortenedLinkCard";
 
 const Shortening = () => {
-  const [userInput, setUserInput] = useState("");
-  const [shortenedLink, setShortenedLink] = useState([]);
-  const [originalLink, setOriginalLink] = useState([]);
-  const [isErorr, setIsErorr] = useState(false);
+  const userInput = useSelector((state) => state.userInput);
+  const shortenedLink = useSelector((state) => state.shortenedLink);
+  const originalLink = useSelector((state) => state.originalLink);
+  const isErorr = useSelector((state) => state.isErorr);
+  const dispatch = useDispatch();
   const inputRef = useRef();
 
   useEffect(() => {
@@ -17,8 +22,8 @@ const Shortening = () => {
     const originalLinkItems = localStorage.getItem("originalLink")
       ? JSON.parse(localStorage.getItem("originalLink"))
       : [];
-    setShortenedLink(shortenedLinkItems);
-    setOriginalLink(originalLinkItems);
+    dispatch(ChangeShortenedlink(shortenedLinkItems));
+    dispatch(changeOriginaLlink(originalLinkItems));
   }, []);
 
   const handlError = () => {
@@ -31,8 +36,10 @@ const Shortening = () => {
         `https://api.shrtco.de/v2/shorten?url=${userInput}`
       );
       const json = await res.json();
-      setShortenedLink([...shortenedLink, json.result.short_link]);
-      setOriginalLink([...originalLink, json.result.original_link]);
+      dispatch(ChangeShortenedlink([...shortenedLink, json.result.short_link]));
+      dispatch(
+        changeOriginaLlink([...originalLink, json.result.original_link])
+      );
       localStorage.setItem(
         "shortenedLink",
         JSON.stringify([...shortenedLink, json.result.short_link])
@@ -41,20 +48,15 @@ const Shortening = () => {
         "originalLink",
         JSON.stringify([...originalLink, json.result.original_link])
       );
+      dispatch(changeUserInput(""));
     } catch (e) {
-      setIsErorr(true);
+      dispatch(changeIsErorr(true));
       handlError();
     }
   }
   return (
-    <div className="container col-xxl-8 px-4 py-5 text-center shortening">
-      <div
-        className="row g-3 needs-validation justify-content-md-center align-items-center shortening__form"
-        style={{
-          backgroundImage: `url(${image})`,
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+    <div className="container col-xxl-8  text-center shortening ">
+      <div className="row g-3 needs-validation justify-content-md-center align-items-center shortening__form ">
         <div className="col-md-6 position-relative">
           <input
             type="text"
@@ -63,9 +65,7 @@ const Shortening = () => {
             placeholder="shorten a link here..."
             value={userInput}
             ref={inputRef}
-            onChange={(e) => {
-              setUserInput(e.target.value);
-            }}
+            onChange={(e) => dispatch(changeUserInput(e.target.value))}
             style={{
               borderColor: isErorr ? "red" : "none",
             }}
@@ -87,8 +87,7 @@ const Shortening = () => {
               if (userInput) {
                 requestShortUrl();
               } else {
-                setIsErorr(true);
-                console.log("it's workong fine");
+                dispatch(changeIsErorr(true));
                 handlError();
               }
             }}
@@ -99,7 +98,7 @@ const Shortening = () => {
       </div>
       {shortenedLink.map((element, index) => {
         return (
-          <ShortenedLink
+          <ShortenedLinkCard
             key={index}
             index={index}
             originalLinkProps={originalLink}
